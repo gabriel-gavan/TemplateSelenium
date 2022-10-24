@@ -20,33 +20,57 @@ public class SeleniumWrappers {
 	}
 public void sendKeys(By locator, String value) {
 	WebElement element =  driver.findElement(locator);
+	waitForElmentToBeVisible(element);
+	Log.info("Called <sendKeys> on element " + element.getAttribute("outerHTML"));
 	try {
+		Log.info("Called <clear> on element " + element.getAttribute("outer.HTML"));
 		element.clear();
+		Log.info("Called <sendKeys> on element " + element.getAttribute("outer.HTML"));
 		element.sendKeys(value);
 	}catch(Exception e) {
-		System.out.println("Something went wrong!");
+		Log.error("Element not found in method<SendKeys()>");
+		Log.error(e.getMessage());
 		
 	}
 }
 	public void click(By locator) {
-		
+		WebElement element = driver.findElement(locator);
+		Log.info("Called method <click()> on element " + element.getAttribute("outerHTML"));
 		try{
-			WebElement element = driver.findElement(locator);
+			
 			waitForElementToBeClickable(element);
 			element.click();
 		}catch(NoSuchElementException e) {
-			System.out.println("Something went wrong!");
-		
+			Log.error("Element not found in method <click()> after 10 seconds");
+			Log.error(e.getMessage());
 		}catch (StaleElementReferenceException e ) {
-		WebElement element2 = driver.findElement(locator);
-		element2.click();
+		element = driver.findElement(locator);
+		Log.info("Called for <StaleElementReferenceException> on element" + element.getAttribute("outerHTML"));
+		element.click();
 		 }
 		}
 	
 	public void waitForElementToBeClickable(WebElement element) {
+		try {
+			Log.info("Called for <waitForElementToBeClickable>" + element.getAttribute("outerHTML"));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
+		} catch(NoSuchElementException e) {
+			Log.error("Element not found in method <waitForElementToBeClickable> after 10 seconds");
+			Log.error(e.getMessage());
 		}
+	}
+	public void waitForElmentToBeVisible(WebElement element) {
+		try {
+			Log.info("Called <waitForElmentToBeVisible> on element " + element.getAttribute("outerHTML"));
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOf(element));
+		}catch(NoSuchElementException e) {
+			Log.error("Element not found in method <waitForElmentToBeVisible> after 10 seconds");
+			Log.error(e.getMessage());
+		}
+	}
+		
 	public void dragAndDrop(By locator,int x, int y) {
 		WebElement element = driver.findElement(locator);
 		Actions action = new Actions(driver);
