@@ -12,6 +12,7 @@ import org.openqa.selenium.devtools.v102.page.model.InstallabilityError;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.TestException;
 
 public class SeleniumWrappers {
 	public WebDriver driver;
@@ -93,5 +94,17 @@ public void sendKeys(By locator, String value) {
 	}
 	public void findElement(By locator) {
 		WebElement element  = driver.findElement(locator);
+	}
+	public WebElement getElement(By locator) {
+		Log.info("Called method <getElement>");
+		waitForElmentToBeVisible(driver.findElement(locator));
+		WebElement element;
+		try {
+			element  = driver.findElement(locator);
+			return element;
+		}catch(Exception e) {
+			Log.error(e.getMessage());
+			throw new TestException("Cannot find  element on <getElement>");
+		}
 	}
 }
