@@ -35,6 +35,7 @@ public class NavMenuPage extends SeleniumWrappers {
 	public By bloglink = By.linkText("BLOG");
 	public By aboutLink = By.linkText("ABOUT");
 	public By postFormatsBlogLink = By.linkText("Post Formats");
+	public By eventsLink = By.linkText("EVENTS");
 	
 	public void navigateTo(By locator) {
 		driver.findElement(locator).click();
