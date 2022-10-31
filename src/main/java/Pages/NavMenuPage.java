@@ -24,7 +24,7 @@ public class NavMenuPage extends SeleniumWrappers {
 	public By loginLink = By.linkText("Login");
 	public By contactLink = By.linkText("CONTACTS");
 	public By singleAuthor = By.linkText("SINGLE AUTHOR");
-	public By blogLink = By.xpath("//a[contains(text(),'Blog')]");
+	public By blogLink = By.linkText("BLOG");
 	public By openClassic = By.xpath("//li[@id='menu-item-114']/a[@href = 'https://keybooks.ro/category/classic/']");
 	public By openPortfolio = By.xpath("//li[@id='menu-item-120']/a[@class= 'sf-with-ul']");
 	public By openPortfolio2Columns = By.linkText("Portfolio 2 columns");
