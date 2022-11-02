@@ -5,7 +5,7 @@
    
     <parameter name = "browser" value = "chrome"/>
         <classes>
-            <class name="Tests.temaCurs19JSExecutor" ></class>
+            <class name="Tests.temacurs20CheckRedirects" ></class>
             
         
         </classes>
