@@ -2,10 +2,11 @@
 <suite name="Suite1" parallel ="tests" thread-count="2" >
     <test name="Chrome" >
     
-   
+    <parameter name = "user" value = "TestUser"/>
+    <parameter name = "pass" value = "12345@67890"/>
     <parameter name = "browser" value = "chrome"/>
         <classes>
-            <class name="Tests.temacurs20CheckRedirects" ></class>
+            <class name="Tests.CookiesLogin" ></class>
             
         
         </classes>

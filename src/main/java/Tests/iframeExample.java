@@ -3,6 +3,7 @@ package Tests;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
 import Pages.ContactPage;
@@ -28,6 +29,8 @@ public class iframeExample extends BaseTest{
 		menu.navigateTo(menu.eventsLink);
 		EventsPage eventsPage = new EventsPage(driver);
 		eventsPage.click(eventsPage.festivalOfOldFilmsLinks);
+		Actions action  = new Actions(driver);
+		action.scrollByAmount(0, 2000).perform();
 		Thread.sleep(3000);
 		
 		SingleEventPage sePage = new SingleEventPage(driver);
